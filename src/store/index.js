@@ -1,10 +1,11 @@
 import { legacy_createStore as createStore } from "redux";
 import CountReducer from "./CountReducer";
+import CartReducer from "./CartReducer";
 
 const initState = {
   products: [
     {
-      _id: "6551a7297f15f9c0a42d1ebf",
+      _id: "0",
       name: "Giày dép Habeco",
       category: "Giày dép",
       brand: "Habeco",
@@ -17,7 +18,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1ec3",
+      _id: "1",
       name: "Thời trang Honda",
       category: "Thời trang",
       brand: "Honda",
@@ -30,7 +31,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1ee9",
+      _id: "2",
       name: "Trà Vinamilk",
       category: "Trà",
       brand: "Vinamilk",
@@ -43,7 +44,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f0a",
+      _id: "3",
       name: "Máy tính Traveloka",
       category: "Máy tính",
       brand: "Traveloka",
@@ -56,7 +57,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f16",
+      _id: "4",
       name: "Du lịch Panasonic",
       category: "Du lịch",
       brand: "Panasonic",
@@ -69,7 +70,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f1d",
+      _id: "5",
       name: "Đồ trang điểm PNJ",
       category: "Đồ trang điểm",
       brand: "PNJ",
@@ -82,7 +83,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f37",
+      _id: "6",
       name: "Bánh Vietcombank",
       category: "Bánh",
       brand: "Vietcombank",
@@ -95,7 +96,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f3b",
+      _id: "7",
       name: "Kẹo Aquafina",
       category: "Kẹo",
       brand: "Aquafina",
@@ -108,7 +109,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f71",
+      _id: "8",
       name: "Ngân hàng Calofic",
       category: "Ngân hàng",
       brand: "Calofic",
@@ -121,7 +122,7 @@ const initState = {
       count: 0,
     },
     {
-      _id: "6551a7297f15f9c0a42d1f7a",
+      _id: "9",
       name: "Bánh Unilever",
       category: "Bánh",
       brand: "Unilever",
@@ -141,6 +142,7 @@ const reducer = (state = initState, action) => {
   return {
     ...state,
     products: CountReducer(state, action),
+    cart: CartReducer(state, action),
   };
 };
 

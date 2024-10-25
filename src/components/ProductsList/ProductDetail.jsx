@@ -5,12 +5,16 @@ import { getProducts } from "../../store/selector";
 import { Button } from "@mui/material";
 import { onCountDecrease, onCountIncrease } from "../../store/action";
 import Header from '../Header';
+import onAdd from '../../plugin/onAdd';
 
 const Detail = () => {
     const products = useSelector(getProducts);
     const { index } = useParams();
     const product = products[index];
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
+
 
 
     if (!product) {
@@ -30,16 +34,16 @@ const Detail = () => {
                     <h2 className="text-[18px] font-semibold">Name: {product.name}</h2>
                     <p>Brand: {product.brand}</p>
                     <p>Description: {product.description}</p>
-                    <p>Price: {product.price} VND</p>
+                    <p>Price: {product.price*product.count} VND</p>
                     <div className="mb-[15px] flex gap-x-[30px] items-center justify-center">
-                                    <button className="text-[20px]" onClick={() => dispatch(onCountDecrease(index))}>-</button>
+                                    <button className="text-[20px]" onClick={() => dispatch(onCountDecrease(parseInt(index)))}>-</button>
                                     <span className="text-[20px]">{product.count}</span> 
-                                    <button className="text-[20px]" onClick={() => dispatch(onCountIncrease(index))}>+</button>
+                                    <button className="text-[20px]" onClick={() => dispatch(onCountIncrease(parseInt(index)))}>+</button>
                                 </div>
                     <div className="flex gap-x-[5px]">
                         <Button onClick={() => navigate("/")}>Back</Button>
-                        <Button>Add to cart</Button>
-                    </div>
+                        <Button onClick={()=>{onAdd({index, product})}}>Add to cart</Button>
+                        </div>
                 </div>
             </div>
         </>

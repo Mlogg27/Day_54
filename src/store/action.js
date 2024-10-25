@@ -10,5 +10,17 @@ const onCountDecrease = (payload = 0) => {
     payload: payload,
   };
 };
+const onAddToCart = (payload = 0) => {
+  return {
+    type: "cart/ADD",
+    payload: payload,
+  };
+};
+const onRemoveProduct = (payload = 0) => {
+  return {
+    type: "cart/remove",
+    payload: payload,
+  };
+};
 
-export { onCountDecrease, onCountIncrease };
+export { onCountDecrease, onCountIncrease, onAddToCart, onRemoveProduct };

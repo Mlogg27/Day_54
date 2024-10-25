@@ -5,6 +5,7 @@ import "./style.css"
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { onCountDecrease, onCountIncrease } from "../../store/action"
+import onAdd from "../../plugin/onAdd"
 
 const ProductsList = () => {
     const products = useSelector(getProducts);
@@ -29,7 +30,7 @@ const ProductsList = () => {
                             <div className="flex flex-col justify-center items-center gap-y-[5px]">
                                 <h3 className="font-semibold text-[20px]">Name: {product.name}</h3>
                                 <p>Brand: {product.brand}</p>
-                                <p>Price: {product.price} VND</p>
+                                <p>Price: {product.price*product.count} VND</p>
                                 <div className="mb-[15px] flex gap-x-[30px] items-center justify-center">
                                     <button className="text-[20px]" onClick={() => dispatch(onCountDecrease(index))}>-</button>
                                     <span className="text-[20px]">{product.count}</span> 
@@ -37,7 +38,7 @@ const ProductsList = () => {
                                 </div>
                                 <div className="flex gap-x-[5px]">
                                     <Button onClick={() => navigate(`/products/detail/${index}`)}>Details</Button>
-                                    <Button>Add to cart</Button>
+                                    <Button onClick={()=>{onAdd({index, product})}}>Add to cart</Button>
                                 </div>
                             </div>
                         </li>
